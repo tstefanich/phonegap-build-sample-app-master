@@ -100,9 +100,9 @@
            tag: "message1", 
            body: "My body" 
         }); 
-          notification.onshow  = function() { console.log(‘show’); };
-          notification.onclose = function() { console.log(‘close’); };
-          notification.onclick = function() { console.log(‘click’); };
+          notification.onshow  = function() { console.log('show'); };
+          notification.onclose = function() { console.log('close'); };
+          notification.onclick = function() { console.log('click'); };
         }
         });
     }
