@@ -38,20 +38,7 @@
       app.receivedEvent('deviceready');
 
 
-if ("Notification" in window) {
-  Notification.requestPermission(function (permission) {
-    // If the user accepts, let’s create a notification
-    if (permission === "granted") {
-      var notification = new Notification("My title", {
-           tag: "message1", 
-           body: "My body" 
-      }); 
-      notification.onshow  = function() { console.log("show"); };
-      notification.onclose = function() { console.log("close"); };
-      notification.onclick = function() { console.log("click"); };
-    }
-  });
-}
+
 
 
 
@@ -105,6 +92,21 @@ if ("Notification" in window) {
     // Fired whenever a geofence transition occurs.
     bgGeo.on('geofence', function(geofence) {
       console.log('- onGeofence: ', geofence.identifier, geofence.location);
+      if ("Notification" in window) {
+  Notification.requestPermission(function (permission) {
+    // If the user accepts, let’s create a notification
+    console.log(permission)
+    if (permission === "granted") {
+      var notification = new Notification("My title", {
+           tag: "message1", 
+           body: "My body" 
+      }); 
+      notification.onshow  = function() { console.log("show"); };
+      notification.onclose = function() { console.log("close"); };
+      notification.onclick = function() { console.log("click"); };
+    }
+  });
+}
     });
     // Fired whenever an HTTP response is received from your server.
     bgGeo.on('http', function(response) {
