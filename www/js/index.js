@@ -66,23 +66,7 @@
         console.warn('- BackgroundGeoLocation error: ', errorCode);
     }
 
-    bgGeo.addGeofence({
-      identifier: "Studios",
-      radius: 300,
-      latitude: 42.7012117,
-      longitude: -73.1168885,
-      notifyOnEntry: true,
-      notifyOnExit: false,
-      notifyOnDwell: true,
-      loiteringDelay: 30000,  // 30 seconds
-      extras: {               // Optional arbitrary meta-data
-        zone_id: 1234
-      }
-    }, function() {
-      console.log("Successfully added geofence");
-    }, function(error) {
-      console.warn("Failed to add geofence", error);
-    });
+    
     // Listen to location events & errors.
     bgGeo.on('location', callbackFn, failureFn);
     // Fired whenever state changes from moving->stationary or vice-versa.
@@ -132,6 +116,7 @@
         method: "POST",
         autoSync: true,
         forceReloadOnGeofence:true,
+        foregroundService: true,
         maxDaysToPersist: 3,
         headers: {  // <-- Optional HTTP headers
             "X-FOO": "bar"
@@ -144,6 +129,23 @@
         console.log("BackgroundGeolocation ready: ", state);
         if (!state.enabled) {
             bgGeo.start();
+            bgGeo.addGeofence({
+      identifier: "Studios",
+      radius: 300,
+      latitude: 42.7012117,
+      longitude: -73.1168885,
+      notifyOnEntry: true,
+      notifyOnExit: false,
+      notifyOnDwell: true,
+      loiteringDelay: 30000,  // 30 seconds
+      extras: {               // Optional arbitrary meta-data
+        zone_id: 1234
+      }
+    }, function() {
+      console.log("Successfully added geofence");
+    }, function(error) {
+      console.warn("Failed to add geofence", error);
+    });
         }
     });
 
