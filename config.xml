@@ -26,13 +26,13 @@
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
  <plugin name="cordova-background-geolocation-lt" source="npm" />
-    <variable name="LICENSE" value="YOUR_LICENSE_KEY" />
-    <variable name="GOOGLE_API_VERSION" value="11.6.0" />
-    <variable name="APPCOMPAT_VERSION" value="26.1.0" />
-    <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
-    <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Background location-tracking is required" />
-    <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Background location-tracking is required" />
-    <variable name="MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
+    <param "LICENSE" value="YOUR_LICENSE_KEY" />
+    <param "GOOGLE_API_VERSION" value="11.6.0" />
+    <param "APPCOMPAT_VERSION" value="26.1.0" />
+    <param "LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
+    <param "LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Background location-tracking is required" />
+    <param "LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Background location-tracking is required" />
+    <param "MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
   </plugin>
       <access origin="*" />
     <allow-intent href="http://*/*" />
