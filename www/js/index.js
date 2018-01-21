@@ -58,7 +58,7 @@
         console.warn('- BackgroundGeoLocation error: ', errorCode);
     }
 
-    beGeo.addGeofence({
+    bgGeo.addGeofence({
       identifier: "Studios",
       radius: 150,
       latitude: 42.7012117,
