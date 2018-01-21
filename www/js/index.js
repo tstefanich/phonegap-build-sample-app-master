@@ -17,84 +17,6 @@
  * under the License.
  */
 
- function onPushwooshInitialized(pushNotification) {
-
-    //if you need push token at a later time you can always get it from Pushwoosh plugin
-    pushNotification.getPushToken(function(token) {
-      console.info('push token: ' + token);
-    }
-    );
-    
-    //and HWID if you want to communicate with Pushwoosh API
-    pushNotification.getPushwooshHWID(function(token) {
-      console.info('Pushwoosh HWID: ' + token);
-    }
-    );
-    
-    //settings tags
-    pushNotification.setTags({
-      tagName: "tagValue",
-      intTagName: 10
-    },
-    function(status) {
-     console.info('setTags success: ' + JSON.stringify(status));
-   },
-   function(status) {
-     console.warn('setTags failed');
-   }
-   );
-    
-    pushNotification.getTags(function(status) {
-       console.info('getTags success: ' + JSON.stringify(status));
-     },
-     function(status) {
-       console.warn('getTags failed');
-     }
-     );
-    
-    //start geo tracking.
-    //pushNotification.startLocationTracking();
-  }
-
-  function initPushwoosh() {
-    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-    
-    //set push notifications handler
-    document.addEventListener('push-notification',
-      function(event) {
-        var message = event.notification.message;
-        var userData = event.notification.userdata;
-
-        document.getElementById("pushMessage").innerHTML = message + "<p>";
-        document.getElementById("pushData").innerHTML = JSON.stringify(event.notification) + "<p>";
-
-                              //dump custom data to the console if it exists
-                              if (typeof(userData) != "undefined") {
-                                console.warn('user data: ' + JSON.stringify(userData));
-                              }
-                            }
-                            );
-    
-    //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({
-     projectid: "GOOGLE_PROJECT_NUMBER",
-     appid: "PUSHWOOSH_APP_ID",
-     serviceName: ""
-   });
-    
-    //register for push notifications
-    pushNotification.registerDevice(
-      function(status) {
-        document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
-        onPushwooshInitialized(pushNotification);
-      },
-      function(status) {
-        alert("failed to register: " + status);
-        console.warn(JSON.stringify(['failed to register ', status]));
-      }
-      );
-  }
-
 
   var app = {
     // Application Constructor
@@ -113,8 +35,80 @@
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-      initPushwoosh();
       app.receivedEvent('deviceready');
+       // Get a reference to the plugin.
+    var bgGeo = window.BackgroundGeolocation;
+
+    //This callback will be executed every time a geolocation is recorded in the background.
+    var callbackFn = function(location) {
+        var coords = location.coords;
+        var lat    = coords.latitude;
+        var lng    = coords.longitude;
+        console.log('- Location: ', JSON.stringify(location));        
+    };
+
+    // This callback will be executed if a location-error occurs.  Eg: this will be called if user disables location-services.
+    var failureFn = function(errorCode) {
+        console.warn('- BackgroundGeoLocation error: ', errorCode);
+    }
+
+    // Listen to location events & errors.
+    bgGeo.on('location', callbackFn, failureFn);
+    // Fired whenever state changes from moving->stationary or vice-versa.
+    bgGeo.on('motionchange', function(isMoving) {
+      console.log('- onMotionChange: ', isMoving);
+    });
+    // Fired whenever a geofence transition occurs.
+    bgGeo.on('geofence', function(geofence) {
+      console.log('- onGeofence: ', geofence.identifier, geofence.location);
+    });
+    // Fired whenever an HTTP response is received from your server.
+    bgGeo.on('http', function(response) {
+      console.log('http success: ', response.responseText);
+    }, function(response) {
+      console.log('http failure: ', response.status);
+    });
+
+    // BackgroundGeoLocation is highly configurable.
+    bgGeo.configure({
+        // Geolocation config
+        desiredAccuracy: 0,
+        distanceFilter: 10,
+        stationaryRadius: 25,
+        // Activity Recognition config
+        activityRecognitionInterval: 10000,
+        stopTimeout: 5,
+        // Application config
+        debug: true,  // <-- Debug sounds & notifications.
+        stopOnTerminate: false,
+        startOnBoot: true,
+        // HTTP / SQLite config
+        url: "http://your.server.com/locations",
+        method: "POST",
+        autoSync: true,
+        maxDaysToPersist: 3,
+        headers: {  // <-- Optional HTTP headers
+            "X-FOO": "bar"
+        },
+        params: {   // <-- Optional HTTP params
+            "auth_token": "maybe_your_server_authenticates_via_token_YES?"
+        }
+    }, function(state) {
+        // This callback is executed when the plugin is ready to use.
+        console.log("BackgroundGeolocation ready: ", state);
+        if (!state.enabled) {
+            bgGeo.start();
+        }
+    });
+
+    // The plugin is typically toggled with some button on your UI.
+    function onToggleEnabled(value) {
+        if (value) {
+            bgGeo.start();
+        } else {
+            bgGeo.stop();
+        }
+    }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
