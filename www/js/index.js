@@ -48,11 +48,33 @@
         console.log('- Location: ', JSON.stringify(location));        
     };
 
+
+        ///
+        //42.7012117,-73.1168885,
+
+        ///
     // This callback will be executed if a location-error occurs.  Eg: this will be called if user disables location-services.
     var failureFn = function(errorCode) {
         console.warn('- BackgroundGeoLocation error: ', errorCode);
     }
 
+    beGeo.addGeofence({
+      identifier: "Studios",
+      radius: 150,
+      latitude: 42.7012117,
+      longitude: -73.1168885,
+      notifyOnEntry: true,
+      notifyOnExit: false,
+      notifyOnDwell: true,
+      loiteringDelay: 30000,  // 30 seconds
+      extras: {               // Optional arbitrary meta-data
+        zone_id: 1234
+      }
+    }, function() {
+      console.log("Successfully added geofence");
+    }, function(error) {
+      console.warn("Failed to add geofence", error);
+    });
     // Listen to location events & errors.
     bgGeo.on('location', callbackFn, failureFn);
     // Fired whenever state changes from moving->stationary or vice-versa.
