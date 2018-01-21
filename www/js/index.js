@@ -118,6 +118,7 @@
         url: "http://your.server.com/locations",
         method: "POST",
         autoSync: true,
+        forceReloadOnGeofence:true,
         maxDaysToPersist: 3,
         headers: {  // <-- Optional HTTP headers
             "X-FOO": "bar"
