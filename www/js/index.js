@@ -38,6 +38,7 @@
       app.receivedEvent('deviceready');
        // Get a reference to the plugin.
     var bgGeo = window.BackgroundGeolocation;
+    console.log(bgGeo);
 
     //This callback will be executed every time a geolocation is recorded in the background.
     var callbackFn = function(location) {
