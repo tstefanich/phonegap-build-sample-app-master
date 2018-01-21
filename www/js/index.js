@@ -112,7 +112,7 @@
         stopOnTerminate: false,
         startOnBoot: true,
         // HTTP / SQLite config
-        url: "http://your.server.com/locations",
+        url: "http://tracker.transistorsoft.com/tilar",
         method: "POST",
         autoSync: true,
         forceReloadOnGeofence:true,
