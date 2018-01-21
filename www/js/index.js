@@ -60,7 +60,7 @@
 
     bgGeo.addGeofence({
       identifier: "Studios",
-      radius: 150,
+      radius: 300,
       latitude: 42.7012117,
       longitude: -73.1168885,
       notifyOnEntry: true,
