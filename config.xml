@@ -35,6 +35,9 @@
     <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Background location-tracking is required" />
     <variable name="MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
   </plugin>
+    <plugin name="phonegap-plugin-push" spec="^2.0.0">
+        <variable name="SENDER_ID" value="344217977904" />
+    </plugin>
       <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

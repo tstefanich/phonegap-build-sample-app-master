@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "344217977904",
+    "firebase_url": "https://makingoutla-9a0e0.firebaseio.com",
+    "project_id": "makingoutla-9a0e0",
+    "storage_bucket": "makingoutla-9a0e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344217977904:android:f0bb449e877d51fa",
+        "android_client_info": {
+          "package_name": "com.makingoutla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344217977904-rq47me9gv12pnvor1qcvq39vpae5ljql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbqvSQ2Nj8DyS_nfuGdDpMQpHVSTw__DI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
