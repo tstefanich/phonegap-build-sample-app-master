@@ -108,7 +108,7 @@
         activityRecognitionInterval: 10000,
         stopTimeout: 5,
         // Application config
-        debug: false,  // <-- Debug sounds & notifications.
+        debug: true,  // <-- Debug sounds & notifications.
         stopOnTerminate: false,
         startOnBoot: true,
         // HTTP / SQLite config
@@ -118,12 +118,12 @@
         forceReloadOnGeofence:true,
         foregroundService: true,
         maxDaysToPersist: 3,
-        headers: {  // <-- Optional HTTP headers
+        /*headers: {  // <-- Optional HTTP headers
             "X-FOO": "bar"
         },
         params: {   // <-- Optional HTTP params
             "currentip": "maybe_your_server_authenticates_via_token_YES?"
-        }
+        }*/
     }, function(state) {
         // This callback is executed when the plugin is ready to use.
         console.log("BackgroundGeolocation ready: ", state);
