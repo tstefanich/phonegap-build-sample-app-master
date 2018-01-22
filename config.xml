@@ -30,7 +30,7 @@
     </plugin>
  <plugin name="cordova-background-geolocation-lt" spec="https://github.com/transistorsoft/cordova-background-geolocation-lt.git">
     <variable name="LICENSE" value="bbc2e90ecb096db530c51b43063d435c55d2f0c524e747485a8d72cb34b17e91" />
-    <variable name="GOOGLE_API_VERSION" value="11.0.1" />
+    <variable name="GOOGLE_API_VERSION" value="11.6.0" />
     <variable name="APPCOMPAT_VERSION" value="26.1.0" />
     <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
     <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Background location-tracking is required" />
