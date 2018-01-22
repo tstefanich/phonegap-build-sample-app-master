@@ -112,7 +112,7 @@
         stopOnTerminate: false,
         startOnBoot: true,
         // HTTP / SQLite config
-        url: "http://tracker.transistorsoft.com/tilar",
+        url: "http://games.ucla.edu/darkgame/currentIP.php",
         method: "POST",
         autoSync: true,
         forceReloadOnGeofence:true,
@@ -122,7 +122,7 @@
             "X-FOO": "bar"
         },
         params: {   // <-- Optional HTTP params
-            "auth_token": "maybe_your_server_authenticates_via_token_YES?"
+            "currentip": "maybe_your_server_authenticates_via_token_YES?"
         }
     }, function(state) {
         // This callback is executed when the plugin is ready to use.
