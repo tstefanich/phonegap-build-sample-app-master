@@ -36,7 +36,7 @@
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
       app.receivedEvent('deviceready');
-       //app.setupPush();
+      app.setupPush();
 
 
 
