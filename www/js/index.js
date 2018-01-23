@@ -126,10 +126,11 @@
         maxDaysToPersist: 3,
         /*headers: {  // <-- Optional HTTP headers
             "X-FOO": "bar"
-        },
+        },*/
         params: {   // <-- Optional HTTP params
-            "currentip": "maybe_your_server_authenticates_via_token_YES?"
-        }*/
+            "registrationId": app.registrationId
+
+        }
     }, function(state) {
         // This callback is executed when the plugin is ready to use.
         console.log("BackgroundGeolocation ready: ", state);
@@ -146,7 +147,6 @@
       loiteringDelay: 30000,  // 30 seconds
       extras: {               // Optional arbitrary meta-data
         zone_id: 1234,
-        registrationId: app.registrationId
       }
     }, function() {
       console.log("Successfully added geofence");
