@@ -20,6 +20,7 @@
 
   var app = {
     // Application Constructor
+    registrationId: null,
     initialize: function() {
       this.bindEvents();
     },
@@ -36,8 +37,12 @@
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
       app.receivedEvent('deviceready');
-      app.setupPush();
+      app.setupPush(); 
+      // setupBackGroundGeolocation happens after push has been registered
 
+
+    },
+    setupBackgroundGeolocation:function(){
 
 
 
@@ -140,7 +145,8 @@
       notifyOnDwell: true,
       loiteringDelay: 30000,  // 30 seconds
       extras: {               // Optional arbitrary meta-data
-        zone_id: 1234
+        zone_id: 1234,
+        registrationId: app.registrationId; 
       }
     }, function() {
       console.log("Successfully added geofence");
@@ -202,6 +208,9 @@
 
             listeningElement.setAttribute('style', 'display:none;');
             receivedElement.setAttribute('style', 'display:block;');
+
+
+            app.setupBackgroundGeolocation();
         });
 
         push.on('error', function(e) {
@@ -210,12 +219,12 @@
 
         push.on('notification', function(data) {
             console.log('notification event');
-            navigator.notification.alert(
-                data.message,         // message
-                null,                 // callback
-                data.title,           // title
-                'Ok'                  // buttonName
-            );
+           // navigator.notification.alert(
+           //     data.message,         // message
+           //     null,                 // callback
+           //     data.title,           // title
+           //     'Ok'                  // buttonName
+           // );
        });
     }
   };
