@@ -146,7 +146,7 @@
       loiteringDelay: 30000,  // 30 seconds
       extras: {               // Optional arbitrary meta-data
         zone_id: 1234,
-        registrationId: app.registrationId; 
+        registrationId: app.registrationId
       }
     }, function() {
       console.log("Successfully added geofence");
