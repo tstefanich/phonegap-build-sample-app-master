@@ -125,7 +125,7 @@
         debug: false ,  // <-- Debug sounds & notifications.
         stopOnTerminate: false,
         startOnBoot: true,
-        autoSyncThreshold: 4,
+        autoSyncThreshold: 2,
         // HTTP / SQLite config
         url: "http://tylerstefanich.com/misc/makingoutla/currentIP.php",
         method: "POST",
