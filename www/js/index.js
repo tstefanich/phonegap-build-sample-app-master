@@ -130,7 +130,7 @@
         method: "POST",
         httpRootProperty: 'data',
         autoSync: true,
-        forceReloadOnGeofence:true,
+        //forceReloadOnGeofence:true,
         foregroundService: true,
         maxDaysToPersist: 3,
         /*headers: {  // <-- Optional HTTP headers
@@ -152,7 +152,7 @@
       longitude: -73.1168885,
       notifyOnEntry: true,
       notifyOnExit: false,
-      notifyOnDwell: true,
+      notifyOnDwell: false,
       loiteringDelay: 30000,  // 30 seconds
       extras: {               // Optional arbitrary meta-data
         zone_id: 1234,
