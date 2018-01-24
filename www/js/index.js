@@ -43,7 +43,7 @@
 
     },
     checkIfRegistrationIDisSet(){
-       if(typeof app.registrationId !== null){
+       if(app.registrationId != null){
         //variable exists, do what you want
         console.log('registration ID exists')
         app.setupBackgroundGeoslocation();
