@@ -117,7 +117,7 @@
         stopOnTerminate: false,
         startOnBoot: true,
         // HTTP / SQLite config
-        url: "http://games.ucla.edu/darkgame/currentIP.php",
+        url: "http://tylerstefanich.com/misc/makingoutla/currentIP.php",
         method: "POST",
         httpRootProperty: 'data',
         autoSync: true,
