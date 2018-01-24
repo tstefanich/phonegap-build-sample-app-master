@@ -50,7 +50,7 @@
         setTimeout(app.checkIfRegistrationIDisSet, 250);
        }
     },
-    setupBackgroundGeoocation:function(){
+    setupBackgroundGeoslocation:function(){
 
 
 
