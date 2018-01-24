@@ -38,7 +38,7 @@
     onDeviceReady: function() {
       app.receivedEvent('deviceready');
       app.setupPush(); 
-      checkIfRegistrationIDisSet();
+      app.checkIfRegistrationIDisSet();
 
 
     },
