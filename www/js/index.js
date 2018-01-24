@@ -38,11 +38,19 @@
     onDeviceReady: function() {
       app.receivedEvent('deviceready');
       app.setupPush(); 
-      // setupBackGroundGeolocation happens after push has been registered
+      checkIfRegistrationIDisSet();
 
 
     },
-    setupBackgroundGeolocation:function(){
+    checkIfRegistrationIDisSet(){
+       if(typeof app.registrationId !== null){
+        //variable exists, do what you want
+        app.BackgroundGeolocation
+      } else{
+        setTimeout(app.checkIfRegistrationIDisSet, 250);
+       }
+    },
+    setupBackgroundGeoocation:function(){
 
 
 
@@ -210,7 +218,6 @@
             receivedElement.setAttribute('style', 'display:block;');
 
 
-            app.setupBackgroundGeolocation();
         });
 
         push.on('error', function(e) {
